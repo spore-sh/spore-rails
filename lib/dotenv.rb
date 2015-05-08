@@ -40,7 +40,7 @@ module Dotenv
   #
   # Returns a hash of all the loaded environment variables.
   def with(*filenames, &block)
-    filenames << ".env" if filenames.empty?
+    filenames << ".envy" if filenames.empty?
 
     filenames.reduce({}) do |hash, filename|
       hash.merge! block.call(File.expand_path(filename)) || {}
