@@ -2,7 +2,7 @@
 require "spore/environment"
 
 # The top level Dotenv module. The entrypoint for the application logic.
-module Dotenv
+module Spore
   class << self
     attr_accessor :instrumenter
   end
@@ -13,7 +13,7 @@ module Dotenv
     with(*filenames) do |f|
       ignoring_nonexistent_files do
         env = Environment.new(f)
-        instrument("dotenv.load", :env => env) { env.apply }
+        instrument("spore.load", :env => env) { env.apply }
       end
     end
   end
@@ -22,7 +22,7 @@ module Dotenv
   def load!(*filenames)
     with(*filenames) do |f|
       env = Environment.new(f)
-      instrument("dotenv.load", :env => env) { env.apply }
+      instrument("spore.load", :env => env) { env.apply }
     end
   end
 
@@ -30,8 +30,8 @@ module Dotenv
   def overload(*filenames)
     with(*filenames) do |f|
       ignoring_nonexistent_files do
-        env = Environment.new(f)
-        instrument("dotenv.overload", :env => env) { env.apply! }
+        env = spore.new(f)
+        instrument("spore.overload", :env => env) { env.apply! }
       end
     end
   end
@@ -40,7 +40,7 @@ module Dotenv
   #
   # Returns a hash of all the loaded environment variables.
   def with(*filenames, &block)
-    filenames << ".envy" if filenames.empty?
+    filenames << ".spore" if filenames.empty?
 
     filenames.reduce({}) do |hash, filename|
       hash.merge! block.call(File.expand_path(filename)) || {}
