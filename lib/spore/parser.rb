@@ -12,13 +12,14 @@ module Spore
     attr_reader :hash
     def initialize(string, config)
       @config = config
-      translate(JSON.parse(string)["envs"][config.environment])
+      spore = JSON.parse(string)
+      translate(spore["id"], spore["envs"][config.environment])
     end
 
-    def translate(hash)
+    def translate(app_id, hash)
       @hash = {}
       hash.each do |key, value|
-        @hash[key] = @config.fetch(value)
+        @hash[key] = @config.fetch(app_id, value)
       end
       @hash
     end

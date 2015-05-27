@@ -1,0 +1,14 @@
+{
+  "host": "https://pod.spore.sh",
+  "useProxy": true,
+  "proxy": {
+    "home": "~/.spore/spored",
+    "port": 8380,
+    "errorFile": "~/.spore/spored/errors.log",
+    "logFile": "~/.spore/spored/log.log"
+  },
+  "sporeFile": ".spore",
+  "netrc": "~/.netrc",
+  "defaultEnv": "development",
+  "defaultEnvs": ["development", "staging", "production"]
+}
