@@ -1,8 +1,6 @@
 require 'json'
 
 module Spore
-  class FormatError < SyntaxError; end
-
   class Parser
     class << self
       def call(string)

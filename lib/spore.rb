@@ -1,4 +1,4 @@
-# require "dotenv/parser"
+require "spore/parser"
 require "spore/environment"
 
 # The top level Dotenv module. The entrypoint for the application logic.

@@ -8,10 +8,11 @@ Gem::Specification.new "spore", Spore::Version do |gem|
   gem.homepage      = "https://github.com/Teleborder/spore-rails"
   gem.license       = "MIT"
 
-  gem.files         = `git ls-files README.md LICENSE lib bin | grep -v rails`
-    .split($OUTPUT_RECORD_SEPARATOR)
+  gem.files = %w(LICENSE README.md Rakefile spore.gemspec)
+  gem.files += Dir.glob("lib/**/*.rb")
+  gem.require_paths = ["lib"]
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
 
-  gem.add_dependency 'spore-api', "~> 0.0.1"
+  gem.add_dependency 'spore-api', "~> 0.0.2"
   gem.add_dependency 'netrc', "~> 0.10.3"
 end
