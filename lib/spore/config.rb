@@ -65,7 +65,7 @@ module Spore
       begin
         hash.update(JSON.parse(File.read(File.expand_path(config_file))))
       rescue Errno::ENOENT
-
+        # ~/.spore/config.json doesn't exist, so just use the default config
         hash
       end
     end
@@ -75,7 +75,7 @@ end
 module Spore
   class DeploymentConfig < Config
     ENV_FORMAT = /(http|https):\/\/([a-zA-Z0-9-]+)\+([a-zA-Z0-9-]+)\+([a-f0-9-]+):([^@]+)@(.+)/
-    
+
     def initialize
       ENV_FORMAT.match(ENV[Config::DEPLOYMENT_VAR]) do |m|
         @name = m[2]
