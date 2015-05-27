@@ -4,18 +4,21 @@ module Spore
   class Parser
     class << self
       def call(string)
-        JSON.parse(string)
+        config = Spore::Config.load
+        new(string, config).hash
       end
     end
 
-    def initialize(string)
-      @string = string
-      @hash = {}
+    attr_reader :hash
+    def initialize(string, config)
+      @config = config
+      translate(JSON.parse(string)["envs"][config.environment])
     end
 
-    def call
-      @string.split("\n").each do |line|
-        parse_line(line)
+    def translate(hash)
+      @hash = {}
+      hash.each do |key, value|
+        @hash[key] = @config.fetch(value)
       end
       @hash
     end
