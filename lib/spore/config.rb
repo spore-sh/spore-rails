@@ -82,16 +82,16 @@ module Spore
 
     def initialize
       ENV_FORMAT.match(ENV[Config::DEPLOYMENT_VAR]) do |m|
-        @name = m[2]
+        name = m[2]
+        key = m[5]
+        host = "#{m[1]}://#{m[6]}"
         @environment = m[3]
-        @key = m[5]
-        @host = "#{m[1]}://#{m[6]}"
         @api = Spore::Client.new
-        @api.key = @key
-        @api.name = @name
-        @api.api_endpoint = @host
+        @api.key = key
+        @api.name = name
+        @api.api_endpoint = host
       end
-      raise "SPORE_DEPLOYMENT has an unexpected format" if @name.nil?
+      raise "SPORE_DEPLOYMENT has an unexpected format" if @environment.nil?
     end
   end
 end
