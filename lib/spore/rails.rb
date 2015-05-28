@@ -24,9 +24,7 @@ module Spore
     # This will get called during the `before_configuration` callback, but you
     # can manually call `Spore::Railtie.load` if you needed it sooner.
     def load
-      Spore.load(
-        root.join(".spore")
-      )
+      Spore.load
     end
 
     # Internal: `Rails.root` is nil in Rails 4.1 before the application is

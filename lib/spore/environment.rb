@@ -4,13 +4,12 @@ module Spore
   class Environment < Hash
     attr_reader :filename
 
-    def initialize(filename)
-      @filename = filename
+    def initialize
       load
     end
 
     def load
-      update Parser.call(read)
+      update Parser.call
     end
 
     def read

@@ -3,16 +3,16 @@ require 'json'
 module Spore
   class Parser
     class << self
-      def call(string)
+      def call
         config = Spore::Config.load
-        new(string, config).hash
+        new(config).hash
       end
     end
 
     attr_reader :hash
-    def initialize(string, config)
+    def initialize(config)
       @config = config
-      spore = JSON.parse(string)
+      spore = JSON.parse(File.read config.spore_file)
       translate(spore["id"], spore["envs"][config.environment])
     end
 
