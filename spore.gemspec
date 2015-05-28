@@ -13,6 +13,6 @@ Gem::Specification.new "spore", Spore::Version do |gem|
   gem.require_paths = ["lib"]
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
 
-  gem.add_dependency 'spore-api', "~> 0.0.4"
-  gem.add_dependency 'netrc', "~> 0.10.3"
+  gem.add_dependency 'spore-api', "~> 0.0"
+  gem.add_dependency 'netrc', "~> 0.10"
 end
