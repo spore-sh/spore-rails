@@ -13,7 +13,7 @@ But it is not always practical to set environment variables on development machi
 Add this line to the top of your application's Gemfile:
 
 ```ruby
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'spore-rails', :groups => [:development, :test]
 ```
 
 And then execute:
@@ -38,7 +38,7 @@ HOSTNAME = ENV['HOSTNAME']
 If you use gems that require environment variables to be set before they are loaded, then list `dotenv-rails` in the `Gemfile` before those other gems and require `dotenv/rails-now`.
 
 ```ruby
-gem 'dotenv-rails', :require => 'dotenv/rails-now'
+gem 'spore-rails', :require => 'spore/rails-now'
 gem 'gem-that-requires-env-variables'
 ```
 
@@ -47,28 +47,21 @@ gem 'gem-that-requires-env-variables'
 Install the gem:
 
 ```shell
-$ gem install dotenv
+$ gem install spore
 ```
 
 As early as possible in your application bootstrap process, load `.env`:
 
 ```ruby
-require 'dotenv'
-Dotenv.load
+require 'spore'
+Spore.load
 ```
-
-Alternatively, you can use the `dotenv` executable to launch your application:
-
-```shell
-$ dotenv ./script.py
-```
-
 To ensure `.env` is loaded in rake, load the tasks:
 
 ```ruby
-require 'dotenv/tasks'
+require 'spore/tasks'
 
-task :mytask => :dotenv do
+task :mytask => :spore do
     # things that require .env
 end
 ```
@@ -128,8 +121,6 @@ Credentials should only be accessible on the machines that need access to them. 
 Personally, I prefer to commit the `.env` file with development-only settings. This makes it easy for other developers to get started on the project without compromising credentials for other environments. If you follow this advice, make sure that all the credentials for your development environment are different from your other deployments and that the development credentials do not have access to any confidential data.
 
 ## Contributing
-
-If you want a better idea of how dotenv works, check out the [Ruby Rogues Code Reading of dotenv](https://www.youtube.com/watch?v=lKmY_0uY86s).
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
