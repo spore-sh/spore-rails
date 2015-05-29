@@ -19,6 +19,8 @@ module Spore
     def translate(app_id, hash)
       @hash = {}
       hash.each do |key, value|
+        # Translate APP_ENV to RAILS_ENV
+        key = "RAILS_ENV" if key == "APP_ENV"
         @hash[key] = @config.fetch(app_id, value)
       end
       @hash
