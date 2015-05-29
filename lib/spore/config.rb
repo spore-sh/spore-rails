@@ -59,7 +59,7 @@ module Spore
     end
 
     def environment
-      ENV["RAILS_ENV"] || @config["defaultEnv"]
+      ENV["SPORE_ENV"] || @config["defaultEnv"]
     end
 
     def server
@@ -92,6 +92,10 @@ module Spore
         @api.api_endpoint = host
       end
       raise "SPORE_DEPLOYMENT has an unexpected format" if @environment.nil?
+    end
+
+    def environment
+      ENV["SPORE_ENV"] || @environment
     end
   end
 end
