@@ -5,7 +5,7 @@ Gem::Specification.new "spore", Spore::Version do |gem|
   gem.authors       = ["Shayan Guha"]
   gem.email         = ["shayan@teleborder.com"]
   gem.description   = gem.summary = "Loads environment variables from spore."
-  gem.homepage      = "https://github.com/Teleborder/spore-rails"
+  gem.homepage      = "https://github.com/spore-sh/spore-rails"
   gem.license       = "MIT"
 
   gem.files = %w(LICENSE README.md Rakefile spore.gemspec)
