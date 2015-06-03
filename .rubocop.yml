@@ -1,17 +1,17 @@
 Lint/HandleExceptions:
   Exclude:
-    - 'lib/dotenv/rails.rb'
-    - 'lib/dotenv.rb'
+    - 'lib/spore/rails.rb'
+    - 'lib/spore.rb'
 
 Style/Documentation:
   Exclude:
     - 'Rakefile'
-    - 'lib/dotenv/version.rb'
+    - 'lib/spore/version.rb'
 
 Style/FileName:
   Exclude:
-    - 'lib/dotenv/rails-now.rb'
-    - 'lib/dotenv-rails.rb'
+    - 'lib/spore/rails-now.rb'
+    - 'lib/spore-rails.rb'
 
 Style/HashSyntax:
   EnforcedStyle: 'hash_rockets'
