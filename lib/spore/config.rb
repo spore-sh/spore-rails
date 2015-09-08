@@ -8,7 +8,8 @@ module Spore
 
     DEPLOYMENT_VAR = "SPORE_DEPLOYMENT"
     CONFIG_FILE = "config.json"
-    DEFAULT_CONFIG = "./lib/config/default.json"
+    DEFAULT_CONFIG = File.expand_path(
+      "../config/default.json", File.dirname(__FILE__))
 
     class << self
       def is_deployment?
