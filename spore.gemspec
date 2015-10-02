@@ -2,6 +2,7 @@ require File.expand_path("../lib/spore/version", __FILE__)
 require "English"
 
 Gem::Specification.new "spore", Spore::Version do |gem|
+  gem.name          = 'spore-rails'
   gem.authors       = ["Shayan Guha"]
   gem.email         = ["shayan@teleborder.com"]
   gem.description   = gem.summary = "Loads environment variables from spore."
